@@ -24,11 +24,11 @@
       </h1>
 
       <label for="username" class="box__label">
-        <input class="<?php if (isset($userError)){echo 'warning';}?> " placeholder="Username" type="text" name="username" required>
+        <input class="<?php if (isset($error)){echo 'warning';}?> " placeholder="Username" type="text" name="username" required>
       </label>
 
       <label for="password" class="box__label">
-        <input class="<?php if (isset($passwordError)){echo 'warning';}?> " placeholder="Password" type="password" name="password" required>
+        <input class="<?php if (isset($error)){echo 'warning';}?> " placeholder="Password" type="password" name="password" required>
       </label>
 
       <input type="submit" class="box__btn" value="Log in" name="submit">

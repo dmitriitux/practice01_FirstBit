@@ -11,11 +11,13 @@ if ((!empty($username)) && (!empty($password))) {
     echo 'You are logged in as Vasily Petrovich';
   } elseif (UNAME != $username) {
     echo 'Login is not right!';
-    $userError = 'Authorisation Error';
+    $error = 'Authorisation Error';
   } else {
     echo 'Password is not right!';
-    $passwordError = 'Authorisation Error';
+    $error = 'Authorisation Error';
   }
+} else {
+  echo 'Fill in all the fields!';
 }
 
 

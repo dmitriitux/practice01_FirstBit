@@ -24,7 +24,16 @@ function login() {
     text => {
       document.getElementById('result').innerHTML = text;
     }
-  ).then(
-    document.getElementById("form").style.display = "none"
   )
+
+  if (login !== 'SWAAROG') {
+    document.getElementById('username').classList.add('warning')
+  } else if (pass !== '1234') {
+    document.getElementById('password').classList.add('warning')
+  } else if ((login !== 'SWAAROG') && (pass !== '1234')) {
+    document.getElementById('username').classList.add('warning')
+    document.getElementById('password').classList.add('warning')
+  } else {
+    document.getElementById('form').style.display = "none";
+  }
 }

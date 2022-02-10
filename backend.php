@@ -8,24 +8,31 @@ $username = $_POST['username'] ?? false;
 $password = $_POST['password'] ?? false;
 
 $result = [];
-$result['result'] = success;
-$result['data'] = FULL_NAME;
+$result['result'] = [];
+$result['data'] = [];
 $result['errors'] = [];
 
 if (is_string($username) && is_string($password)) {
   if ((UNAME == $username) && (PSWRD == $password)) {
+    $result['result'] = "success";
     echo json_encode($result);
   } elseif (UNAME != $username) {
-    echo 'Login is not right!';
-    $errorUser = 'Authorisation Error';
+    $result['result'] = "error";
+    $result['error'] = "Login is not right";
+    echo json_encode($result);
   } elseif (strlen($password) < 4) {
-	 echo 'Minimum 4 characters in the password.';
+    $result['result'] = "error";
+    $result['error'] = "Minimum 4 characters in the password!";
+    echo json_encode($result);
   } else {
-    echo 'Password is not right!';
-    $errorPsw = 'Authorisation Error';
+    $result['result'] = "error";
+    $result['error'] = "Password is not right!";
+    echo json_encode($result);
   }
 } else {
-  echo 'Fill in all the fields!';
+    $result['result'] = "error";
+    $result['error'] = "Fill in all the fields!";
+    echo json_encode($result);
 }
 
 

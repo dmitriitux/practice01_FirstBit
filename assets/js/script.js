@@ -23,17 +23,15 @@ function login() {
   ).then(
     text => {
       document.getElementById('result').innerHTML = text;
+      const obj = JSON.parse(text);
+      console.log(obj);
+      console.log(obj.result);
+
+      if (obj.error == 'errorLogin') {
+        document.getElementById('username').classList.add('warning');
+      } else if (obj.error == 'errorPassword') {
+        document.getElementById('password').classList.add('warning')
+      }
     }
   )
-
-  if (login !== 'SWAAROG') {
-    document.getElementById('username').classList.add('warning')
-  } else if (pass !== '1234') {
-    document.getElementById('password').classList.add('warning')
-  } else if ((login !== 'SWAAROG') && (pass !== '1234')) {
-    document.getElementById('username').classList.add('warning')
-    document.getElementById('password').classList.add('warning')
-  } else {
-    document.getElementById('form').style.display = "none";
-  }
 }

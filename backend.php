@@ -8,32 +8,29 @@ $username = $_POST['username'] ?? false;
 $password = $_POST['password'] ?? false;
 
 $result = [];
+
 $result['result'] = [];
 $result['data'] = [];
-$result['errors'] = [];
+$result['error'] = [];
+$errorLogin = "Login is not right";
+$errorPassword = "Password is not right";
+$errorAll = "Fill in all the fields!";
 
 if (is_string($username) && is_string($password)) {
   if ((UNAME == $username) && (PSWRD == $password)) {
     $result['result'] = "success";
-    echo json_encode($result);
+    $result['data'] = FULL_NAME;
   } elseif (UNAME != $username) {
     $result['result'] = "error";
-    $result['error'] = "Login is not right";
-    echo json_encode($result);
-  } elseif (strlen($password) < 4) {
-    $result['result'] = "error";
-    $result['error'] = "Minimum 4 characters in the password!";
-    echo json_encode($result);
+    $result['error'] = "errorLogin";
+    $result['errorText'] = $errorLogin;
   } else {
     $result['result'] = "error";
-    $result['error'] = "Password is not right!";
-    echo json_encode($result);
+    $result['error'] = "errorPassword";
+    $result['errorText'] = $errorPassword;
   }
-} else {
-    $result['result'] = "error";
-    $result['error'] = "Fill in all the fields!";
-    echo json_encode($result);
 }
 
+echo json_encode($result);
 
 ?>
